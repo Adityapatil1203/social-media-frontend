@@ -185,7 +185,7 @@ const Navbar = () => {
     <div className={classes.wrapper}>
       <div className={classes.left}>
         <Link to='/'>
-          WebDevMania
+          Aditya
         </Link>
       </div>
       <div className={classes.center}>
