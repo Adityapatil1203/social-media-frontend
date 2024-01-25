@@ -185,7 +185,11 @@ const Navbar = () => {
     <div className={classes.wrapper}>
       <div className={classes.left}>
         <Link to='/'>
+<<<<<<< HEAD
           WeBook
+=======
+          Aditya
+>>>>>>> 304e409b326da37871c0727cc49f44ea4852c1d2
         </Link>
       </div>
       <div className={classes.center}>
