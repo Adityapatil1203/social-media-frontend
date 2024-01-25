@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux'
 import man from '../../assets/man.jpg'
 import {Link} from 'react-router-dom'
 import {capitalizeFirstLetter} from '../../util/capitalizeFirstLetter'
+
+
 const RightSide = () => {
   const [friends,setFriends] = useState([])
   const {user,token} =  useSelector((state)=> state.auth)
@@ -11,7 +13,7 @@ const RightSide = () => {
   useEffect(()=>{
      const fetchFriends = async()=>{
       try {
-        const res  = await fetch(`https://backend-social-media-jxj6.onrender.com/user/find/friends`,{
+        const res  = await fetch(`http://localhost:5000/user/find/friends`,{
            headers:{
             "Authorization" : `${token}`
            }

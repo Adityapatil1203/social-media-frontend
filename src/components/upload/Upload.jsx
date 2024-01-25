@@ -34,7 +34,7 @@ const Upload = () => {
         formData.append("filename",filename)
         formData.append("image",photo)
 
-        await fetch('https://backend-social-media-jxj6.onrender.com/upload/image',{
+        await fetch('http://localhost:5000/upload/image',{
           headers:{
            "Authorization": `${token}`
           },
@@ -46,7 +46,7 @@ const Upload = () => {
 
      
 
-       const res = await fetch('https://backend-social-media-jxj6.onrender.com/post',{
+       const res = await fetch('http://localhost:5000/post',{
         headers:{
           'Content-Type': 'application/json',
           "Authorization":`${token}`

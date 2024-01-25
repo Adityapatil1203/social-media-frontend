@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from './posts.module.css'
 import { useSelector } from 'react-redux'
-
-
 import Post from '../post/Post'
 
 const Posts = () => {
@@ -12,7 +10,7 @@ const Posts = () => {
   useEffect(() => {
    const fetchPosts = async ()=>{
     try {
-       const res = await fetch('https://backend-social-media-jxj6.onrender.com/post/timeline/posts',{
+       const res = await fetch('http://localhost:5000/post/timeline/posts',{
         headers:{
           'Authorization':`${token}`
         }
@@ -36,7 +34,7 @@ const Posts = () => {
       {
         console.log(typeof posts)
       }
-    { posts && posts.map((post) => (
+    { posts && posts?.map((post) => (
       <Post key={post._id} post={post} />
     ))}
   </div>

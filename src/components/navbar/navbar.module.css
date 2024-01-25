@@ -248,6 +248,7 @@
     left: 0;
     background-color: rgba(255, 255, 255, 0.97);
     z-index: 999999999;
+     background: #f3f3f3;
 }
 
 .wrapper{

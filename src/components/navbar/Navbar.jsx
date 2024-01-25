@@ -36,7 +36,7 @@ const Navbar = () => {
     useEffect(()=>{
         const fetchAllUsers = async()=>{
             try {
-              const res = await fetch(`https://backend-social-media-jxj6.onrender.com/user/findAll`)
+              const res = await fetch(`http://localhost:5000/user/findAll`)
               const data = await res.json()
               setAllUsers(data)
             } catch (error) {
@@ -76,7 +76,7 @@ const Navbar = () => {
             formData.append('filename',filename)
             formData.append('image',photo)
 
-            await fetch(`https://backend-social-media-jxj6.onrender.com/upload/image`,{
+            await fetch(`http://localhost:5000/upload/image`,{
                 headers:{
                    'Authorization':`${token}`
     
@@ -89,7 +89,7 @@ const Navbar = () => {
 
        
         try {
-            const res =await fetch(`https://backend-social-media-jxj6.onrender.com/user/updateUser/${user._id}`,{
+            const res =await fetch(`http://localhost:5000/user/updateUser/${user._id}`,{
                 headers:{
                     'Content-Type':'application/json',
                     'Authorization':`${token}`
@@ -185,7 +185,7 @@ const Navbar = () => {
     <div className={classes.wrapper}>
       <div className={classes.left}>
         <Link to='/'>
-          WebDevMania
+          WeBook
         </Link>
       </div>
       <div className={classes.center}>
@@ -263,7 +263,7 @@ const Navbar = () => {
                   <div onClick={() => setSearchText("")} className={classes.allUsersContainer}>
                     {filterUsers?.map((user) => (
                       <Link to={`/profileDetail/${user._id}`} key={user._id} onClick={() => setShowMobileNav(false)}>
-                        <img src={user?.photo ? `https://backend-social-media-jxj6.onrender.com/images/${user.photo}` : man} />
+                        <img src={user?.photo ? `http://localhost:5000/images/${user.photo}` : man} />
                         <div className={classes.userData}>
                           <span>{user?.username}</span>
                           <span>{user?.bio?.slice(0, 10)}</span>
@@ -281,7 +281,7 @@ const Navbar = () => {
                 </div>
                 <img
                   onClick={() => setShowModal(!showModal)}
-                  src={user?.profileImg ? `https://backend-social-media-jxj6.onrender.com/images/${user?.profileImg}` : man}
+                  src={user?.profileImg ? `http://localhost:5000/images/${user?.profileImg}` : man}
                   className={classes.profileUserImg}
                 />
                 {showModal && (

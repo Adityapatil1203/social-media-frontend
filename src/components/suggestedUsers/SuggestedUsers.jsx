@@ -9,14 +9,14 @@ import { handleFollow } from '../../redux/authSlice'
 const SuggestedUsers = () => {
 
    const {user , token} = useSelector((state)=>state.auth)
-   const [suggestedUsers,setSuggestedUsers] = useState({})
+   const [suggestedUsers,setSuggestedUsers] = useState([])
    const dispatch = useDispatch();
 
   useEffect(()=>{
     
     const fetchSuggestedUsers = async()=>{
       try {
-         const res = await fetch('https://backend-social-media-jxj6.onrender.com/user/find/suggestedUsers',{
+         const res = await fetch('http://localhost:5000/user/find/suggestedUsers',{
            headers:{
             "Authorization": `${token}`
            }
@@ -34,7 +34,7 @@ const SuggestedUsers = () => {
 
   const toggleFollow = async (id)=>{
      try {
-        await fetch(`https://backend-social-media-jxj6.onrender.com/user/toggleFollow/${id}`,{
+        await fetch(`http://localhost:5000/user/toggleFollow/${id}`,{
            headers:{
             'Authorization': `${token}`
            },

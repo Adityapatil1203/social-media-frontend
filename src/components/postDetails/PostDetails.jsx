@@ -19,7 +19,7 @@ const PostDetails = () => {
   useEffect(()=>{
     const fetchPost = async ()=>{
       try {
-         const res = await fetch(`https://backend-social-media-jxj6.onrender.com/post/find/${id}`)
+         const res = await fetch(`http://localhost:5000/post/find/${id}`)
          const data = await res.json()
          setPost(data)
       } catch (error) {
@@ -33,7 +33,7 @@ const PostDetails = () => {
   useEffect(()=>{
    const fetchComments = async ()=>{
       try {
-          const res = await fetch(`https://backend-social-media-jxj6.onrender.com/comment/${id}`,{
+          const res = await fetch(`http://localhost:5000/comment/${id}`,{
             headers:{
               "Authorization":`${token}`
             }
@@ -59,7 +59,7 @@ const PostDetails = () => {
          return
        }
 
-      if(commentText.length > 0){
+      if(commentText.length > 50){
         setIsCommentLong(true)
         setTimeout(()=>{
           setIsCommentLong(false)
@@ -68,7 +68,7 @@ const PostDetails = () => {
       }
 
       try {
-        const res = await fetch(`https://backend-social-media-jxj6.onrender.com/comment`,{
+        const res = await fetch(`http://localhost:5000/comment`,{
           headers:{
             'Content-Type':'application/json',
             'Authorization':`${token}`
@@ -90,7 +90,7 @@ const PostDetails = () => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
          <div className={classes.left}>
-             <img src={post?.photo && `https://backend-social-media-jxj6.onrender.com/images/${post?.photo}`} alt="" />
+             <img src={post?.photo && `http://localhost:5000/images/${post?.photo}`} alt="" />
          </div>
         <div className={classes.right}>
             <div className={classes.wrapperTopSide}>

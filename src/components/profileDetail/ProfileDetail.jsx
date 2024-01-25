@@ -20,7 +20,7 @@ const ProfileDetail = () => {
    useEffect(()=>{
        const fetchProfile = async ()=>{
         try {
-          const res = await fetch(`https://backend-social-media-jxj6.onrender.com/user/find/${id}`,{
+          const res = await fetch(`http://localhost:5000/user/find/${id}`,{
             headers: {
               'Authorization': `${token}`
             }
@@ -44,7 +44,7 @@ const ProfileDetail = () => {
    useEffect(()=>{
     const fetchProfilePosts = async ()=>{
       try {
-        const res = await fetch(`https://backend-social-media-jxj6.onrender.com/post/find/userposts/${id}`)
+        const res = await fetch(`http://localhost:5000/post/find/userposts/${id}`)
 
         const data = await res.json()
         setProfilePosts(data)
@@ -58,7 +58,7 @@ const ProfileDetail = () => {
   //handle follow function
   const handleFollowFunction =async ()=>{
       try {
-         await fetch(`https://backend-social-media-jxj6.onrender.com/user/toggleFollow/${profile?._id}`,{
+         await fetch(`http://localhost:5000/user/toggleFollow/${profile?._id}`,{
             headers:{
               "Authorization": `${token}`
             },
@@ -87,7 +87,7 @@ const ProfileDetail = () => {
        <div className={classes.wrapper}>
          <div className={classes.top}>
               <div className={classes.topLeftSide}>
-                <img src={profile?.profileImg ?`https://backend-social-media-jxj6.onrender.com/images/${profile?.profileImg}`:man} alt=""
+                <img src={profile?.profileImg ?`http://localhost:5000/images/${profile?.profileImg}`:man} alt=""
                 className={classes.profileImg} />
               </div>
               <div className={classes.topRightSide}>
@@ -96,7 +96,7 @@ const ProfileDetail = () => {
               </div>
               {
                 profile?._id !== user._id &&
-                <button onClick={handleFollowFunction} className={classes.followBtn}>{isFollowed?"unFollow":"Follow"}</button>
+                <button onClick={handleFollowFunction} className={classes.followBtn}>{isFollowed?"Unfollow":"Follow"}</button>
               }
          </div>
          <div className={classes.center}>

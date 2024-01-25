@@ -20,7 +20,7 @@ const Signup = () => {
 
       try {
 
-        const res = await fetch('https://backend-social-media-jxj6.onrender.com/auth/register',{
+        const res = await fetch('http://localhost:5000/auth/register',{
           headers:{
             'Content-Type':'application/json'
           },

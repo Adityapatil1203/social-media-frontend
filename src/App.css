@@ -6,3 +6,22 @@
     font-family:"Roboto",sans-serif;
     scroll-behavior:smooth;
 }
+
+.App {
+    overflow: hidden;
+    color: #242d49;
+    background: #f3f3f3;
+   
+  }
+.blur {
+    position: absolute;
+    width: 22rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: red;
+    filter: blur(90px);
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }

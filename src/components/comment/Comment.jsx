@@ -12,10 +12,10 @@ const Comment = ({c}) => {
     const [comment,setComment] = useState(c)
     const [isLiked,setIsLiked] = useState(comment?.likes?.includes(user._id))
 
-    // https://backend-social-media-jxj6.onrender.com
+    // http://localhost:5000
     const handleLikeComment = async() => {
       try {
-        await fetch(`https://backend-social-media-jxj6.onrender.com/comment/toggleLike/${c?._id}`, {
+        await fetch(`http://localhost:5000/comment/toggleLike/${c?._id}`, {
           headers: {
             "Authorization": `${token}`
           },

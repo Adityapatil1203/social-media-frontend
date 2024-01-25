@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Navbar from './components/navbar/Navbar'
 import {Routes,Route, Navigate} from 'react-router-dom'
-import Footer from './components/footer/Footer'
+
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Signup from './components/signup/Signup'
@@ -15,7 +15,9 @@ function App() {
   const {user} = useSelector((state)=>state.auth)
   return (
    
-    <div>
+    <div className='App'>
+      {/* <div className="blur" style={{ top: "-18%", right: "0" }}></div>
+      <div className="blur" style={{ top: "36%", left: "-8rem" }}></div> */}
       <Navbar/>
       <Routes>
           <Route path='/' element={user ? <Home/> : <Navigate to='/login'/>}/>
@@ -25,7 +27,7 @@ function App() {
           <Route path='/profileDetail/:id' element={user ? <ProfileDetail/>:<Navigate to='/login'/>}/>
           <Route path='/postDetails/:id' element={user ? <PostDetails/>:<Navigate to='/login'/> }/>
       </Routes>
-      <Footer/>
+      
     </div>
   )
 }

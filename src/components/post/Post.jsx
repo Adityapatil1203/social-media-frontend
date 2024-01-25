@@ -27,7 +27,7 @@ const Post = ({post}) => {
   useEffect(()=>{
     const fetchComments = async(req,res)=>{
       try {
-        const res = await fetch(`https://backend-social-media-jxj6.onrender.com/comment/${post._id}`,{
+        const res = await fetch(`http://localhost:5000/comment/${post._id}`,{
           headers:{
             "Authorization":`${token}`
           }
@@ -45,7 +45,7 @@ const Post = ({post}) => {
 
   const deletePost = async()=>{
      try {
-       await fetch(`https://backend-social-media-jxj6.onrender.com/post/${post._id}`,{
+       await fetch(`http://localhost:5000/post/${post._id}`,{
          headers:{
            "Authorization":`${token}`
          },
@@ -61,7 +61,7 @@ const Post = ({post}) => {
 
   // const handleLikePost = async()=>{
   //    try {
-  //      await fetch(`https://backend-social-media-jxj6.onrender.com/post/toggleLike/${post._id}`,{
+  //      await fetch(`http://localhost:5000/post/toggleLike/${post._id}`,{
   //        headers:{
   //         "Authorization":`${token}`
   //        },
@@ -75,7 +75,7 @@ const Post = ({post}) => {
 
   const handleLikePost = async () => {
     try {
-     const response = await fetch(`https://backend-social-media-jxj6.onrender.com/post/toggleLikes/${post._id}`, {
+     const response = await fetch(`http://localhost:5000/post/toggleLikes/${post._id}`, {
         headers: {
           "Authorization": `${token}`
         },
@@ -97,7 +97,7 @@ const Post = ({post}) => {
 
   const handleBookmark = async()=>{
      try {
-        await fetch(`https://backend-social-media-jxj6.onrender.com/user/bookmark/${post._id}`,{
+        await fetch(`http://localhost:5000/user/bookmark/${post._id}`,{
           headers:{
             "Authorization":`${token}`
           },
@@ -121,7 +121,7 @@ const Post = ({post}) => {
       }
 
       try {
-         const res = await fetch('https://backend-social-media-jxj6.onrender.com/comment',{
+         const res = await fetch('http://localhost:5000/comment',{
           headers:{
             "Content-Type":'application/json',
             "Authorization":`${token}`
@@ -173,7 +173,7 @@ const Post = ({post}) => {
          <div className={classes.center}>
           <div className={classes.desc}>{post.desc}</div>
           {post?.location && <div className={classes.location}>Location: {post.location}</div>}
-          <img className={classes.postImg} src={post?.photo ? `https://backend-social-media-jxj6.onrender.com/images/${post?.photo}` : woman} />
+          <img className={classes.postImg} src={post?.photo ? `http://localhost:5000/images/${post?.photo}` : woman} />
         </div>
         <div className={`${classes.controls} ${showComment && classes.showComment}`}>
           <div className={classes.controlsLeft}>
