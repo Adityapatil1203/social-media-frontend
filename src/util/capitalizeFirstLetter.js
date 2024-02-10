@@ -4,3 +4,4 @@ export function capitalizeFirstLetter(string)
 }
 
 // http://localhost:5000
+// `http://localhost:5000/images/${profile?.profileImg}`

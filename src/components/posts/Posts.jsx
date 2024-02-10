@@ -34,7 +34,7 @@ const Posts = () => {
       {
         console.log(typeof posts)
       }
-    { posts && posts?.map((post) => (
+    {Array.isArray(posts) && posts && posts?.map((post) => (
       <Post key={post._id} post={post} />
     ))}
   </div>

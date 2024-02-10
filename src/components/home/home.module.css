@@ -5,6 +5,20 @@
     display:grid;
     grid-template-columns:3fr 6.5fr 3fr;
     gap:10rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+}
+
+.light{
+    background: #ffffff;
+    color: #000000;
+}
+
+.dark{
+    background: #333333;
+    color: #ffffff;
 }
 
 

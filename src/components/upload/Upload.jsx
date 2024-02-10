@@ -10,7 +10,7 @@ const Upload = () => {
   const [photo,setPhoto] = useState("")
   const {token} = useSelector((state)=>state.auth)
   const navigate = useNavigate();
-
+ const [url,setUrl] = useState("")
   
 
   const handleState = (e)=>{
@@ -23,25 +23,41 @@ const Upload = () => {
       e.preventDefault()
 
      try {
-      let filename = null
+      let imageUrl = null
 
       if(photo){
-        const formData = new FormData()
-        filename =crypto.randomUUID() + photo.name
+      //   const formData = new FormData()
+      //   filename =crypto.randomUUID() + photo.name
        
-        console.log(filename)
-        console.log(formData)
-        formData.append("filename",filename)
-        formData.append("image",photo)
+      //   console.log(filename)
+      //   console.log(formData)
+      //   formData.append("filename",filename)
+      //   formData.append("image",photo)
 
-        await fetch('http://localhost:5000/upload/image',{
-          headers:{
-           "Authorization": `${token}`
-          },
-          method:"POST",
-          body:formData
+      //   await fetch('http://localhost:5000/upload/image',{
+      //     headers:{
+      //      "Authorization": `${token}`
+      //     },
+      //     method:"POST",
+      //     body:formData
+      //  })
+
+
+       const data = new FormData()
+       data.append('file',photo)
+       data.append('upload_preset','social-media')
+       data.append('cloud_name','aditya12xyz')
+
+       const cloudinaryResponse =  await fetch("https://api.cloudinary.com/v1_1/aditya12xyz/image/upload",{
+        method:"POST",
+        body:data
        })
-
+       .then(res=>res.json())
+      
+       imageUrl = cloudinaryResponse.secure_url;
+        console.log("imageurl ",imageUrl)
+        setUrl(imageUrl)
+       
       }
 
      
@@ -52,11 +68,12 @@ const Upload = () => {
           "Authorization":`${token}`
         },
         method:"POST",
-        body:JSON.stringify({...state,photo:filename})
+        body:JSON.stringify({...state,photo:imageUrl})
       })
 
       const data = await res.json()
-      console.log(data)
+      console.log("post data in cloud ",data)
+      // console.log(data)
        navigate('/')
      } catch (error) {
         console.error(error)

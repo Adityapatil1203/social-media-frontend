@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import classes from './profileDetail.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import man from '../../assets/man.jpg'
 import PostPhoto from '../postPhoto/PostPhoto'
-import { handleFollow } from '../../redux/authSlice'
+import { deleteUser, handleFollow } from '../../redux/authSlice'
 
 const ProfileDetail = () => {
 
@@ -15,6 +15,7 @@ const ProfileDetail = () => {
   const [show,setShow] = useState('mypost')
   const {id} = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   //fetch profile
    useEffect(()=>{
@@ -82,18 +83,43 @@ const ProfileDetail = () => {
       }
   }
 
+
+  const handleDelete = async()=>{
+      try {
+        const res =  await fetch(`http://localhost:5000/user/deleteUser/${profile?._id}`,{
+          headers:{
+            "Authorization": `${token}`
+          },
+          method:"DELETE"
+       })
+
+       const data = await res.json()
+       console.log(data)
+       dispatch(deleteUser())
+       navigate("/signup")
+
+      } catch (error) {
+        console.log(error)
+      }
+  }
+
   return (
      <div className={classes.container}>
        <div className={classes.wrapper}>
          <div className={classes.top}>
               <div className={classes.topLeftSide}>
-                <img src={profile?.profileImg ?`http://localhost:5000/images/${profile?.profileImg}`:man} alt=""
+                <img src={profile?.profileImg ?profile?.profileImg:man} alt=""
                 className={classes.profileImg} />
               </div>
               <div className={classes.topRightSide}>
                 <h4>{profile?.username}</h4>
-                <h4>Bio: {profile?.desc ? profile.desc: "Life is full of adventures"}</h4>
+                {
+                  console.log("profile ",profile)
+                }
+                <h4>Bio: {profile?.bio ? profile.bio: "Life is full of adventures"}</h4>
+                
               </div>
+             {profile?._id === user._id && <button className={classes.btn} onClick={handleDelete} >Delete Account</button>} 
               {
                 profile?._id !== user._id &&
                 <button onClick={handleFollowFunction} className={classes.followBtn}>{isFollowed?"Unfollow":"Follow"}</button>

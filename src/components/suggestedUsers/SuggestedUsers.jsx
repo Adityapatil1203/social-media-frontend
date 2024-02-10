@@ -23,6 +23,7 @@ const SuggestedUsers = () => {
          })
 
          const data = await res.json()
+        console.log("suggest data ",data)
          setSuggestedUsers(data)
       } catch (error) {
         console.error(error)
@@ -53,7 +54,7 @@ const SuggestedUsers = () => {
     <div className={classes.container}>
        <div className={classes.wrapper}>
           <div className={classes.myProfile}>
-            <img src={man} alt="" className={classes.profileUserImg} />
+            <img src={user?.profileImg ?user?.profileImg:man} alt="" className={classes.profileUserImg} />
             <div className={classes.profileData}>
                <span>{capitalizeFirstLetter(user.username)}</span>
                <span className={classes.shortBio}>{user?.bio ? user.bio : "Life is full of adventure "}</span>
@@ -62,10 +63,13 @@ const SuggestedUsers = () => {
           {suggestedUsers?.length > 0 ? (
           <div className={classes.suggestedUsers}>
               <h3 className={classes.title}>Recommended users to follow</h3>
-              {suggestedUsers?.map((suggestedUser) => (
+              {Array.isArray(suggestedUsers) && suggestedUsers?.map((suggestedUser) => (
                 <div className={classes.suggestedUser} key={suggestedUser._id}>
                   <Link to={`/profileDetail/${suggestedUser._id}`}>
-                    <img src={suggestedUser?.photo ? suggestedUser.photo : man} alt='' className={classes.imgUser}/>
+                    {
+                      console.log("suggested user , ",`${suggestedUser}`)
+                    }
+                    <img src={suggestedUser?.profileImg ? suggestedUser?.profileImg : man} alt='' className={classes.imgUser}/>
                   </Link> 
                   <div className={classes.suggestedUserData}>
                     <span>{capitalizeFirstLetter(suggestedUser.username)}</span>

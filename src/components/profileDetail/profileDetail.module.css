@@ -112,6 +112,21 @@
     background-color: #170ff4;
 }
 
+.btn{
+    margin: 2px;
+    padding: 8px;
+    background: rgba(0, 217, 255, 0.953);
+    font-size: medium;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.btn:hover{
+    background: rgba(20, 150, 173, 0.953);
+    color: white;
+}
+
 /* responsive */
 
 @media only screen and (max-width: 992px){

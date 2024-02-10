@@ -40,7 +40,7 @@ const Comment = ({c}) => {
   return (
     <div className={classes.container}>
       <div className={classes.commentLeft}>
-        <img src={man} className={classes.commentImg}/>
+        <img src={user?.profileImg ?user?.profileImg:man} className={classes.commentImg}/>
         <div className={classes.commentData}>
           <span>{comment?.user?.username ? capitalizeFirstLetter(comment?.user?.username) : ''}</span>
           <span className={classes.commentTimeago}>{format(comment?.createdAt)}</span>

@@ -148,7 +148,7 @@ const Post = ({post}) => {
       <div className={classes.wrapper}>
          <div className={classes.top}>
            <Link to={`/profileDetail/${post?.user?._id}`} className={classes.topLeft}>
-              <img src={woman} alt="" className={classes.profileUserImg} />
+              <img src={post?.user?.profileImg ? post?.user?.profileImg:woman} alt="" className={classes.profileUserImg} />
               <div className={classes.profileMetadata}>
                  <span>{capitalizeFirstLetter(post.user.username)}</span>
                  <span>{format(post.createdAt)}</span>
@@ -173,7 +173,7 @@ const Post = ({post}) => {
          <div className={classes.center}>
           <div className={classes.desc}>{post.desc}</div>
           {post?.location && <div className={classes.location}>Location: {post.location}</div>}
-          <img className={classes.postImg} src={post?.photo ? `http://localhost:5000/images/${post?.photo}` : woman} />
+          <img className={classes.postImg} src={post?.photo ? post?.photo : woman} />
         </div>
         <div className={`${classes.controls} ${showComment && classes.showComment}`}>
           <div className={classes.controlsLeft}>

@@ -44,9 +44,9 @@ const Signup = () => {
   return (
     <div className={classes.signUpContainer}>
         <div className={classes.signUpWrapper}>
-           <div className={classes.signUpLeftSide}>
+           {/* <div className={classes.signUpLeftSide}>
               <img src={img} alt="" className={classes.leftImg}/>
-           </div>
+           </div> */}
            <div className={classes.signUpRightSide}>
              <h2 className={classes.title}>Sign Up</h2>
              <form onSubmit={handleSignUp} action="" className={classes.signUpForm}>

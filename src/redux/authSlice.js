@@ -2,7 +2,8 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     user:null,
-    token:null
+    token:null,
+    themeMode:'light'
 }
 
 export const authSlice = createSlice({
@@ -10,6 +11,7 @@ export const authSlice = createSlice({
     initialState,
     reducers:{
         login(state,action){
+            console.log("redux :",action.payload.others);
             localStorage.clear()
             state.user = action.payload.others
             state.token = action.payload.token
@@ -42,10 +44,17 @@ export const authSlice = createSlice({
         },
         updateUser(state, action){
             state.user = action.payload
+        },
+        deleteUser(state,action){
+            state.user = null
+            state.token = null
+        },
+        toggleTheme(state,action){
+            state.themeMode=action.payload
         }
     }
 })
 
-export const {login,register,bookmarkPost,updateUser,  handleFollow ,logout} = authSlice.actions
+export const {login,register,bookmarkPost,updateUser,  handleFollow ,logout , deleteUser , toggleTheme} = authSlice.actions
 
 export default authSlice.reducer

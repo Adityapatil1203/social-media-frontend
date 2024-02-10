@@ -17,12 +17,13 @@
 
 .loginWrapper{
     border-radius: 20px;
-    width: 45vw;
+    width: 30vw;
     height: 70vh;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .loginLeftSide{
@@ -44,6 +45,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    border-radius: 40px;
 }
 
 .loginRightSide >h2{
@@ -73,6 +75,7 @@
     border: none;
     border-bottom: 1px solid #333;
     width: 50%;
+    font-size:14px;
     padding-left: 0.25rem;
     padding-bottom: 0.25rem;
     transition: 150ms all ease-in-out;
@@ -128,4 +131,46 @@
     position: absolute;
     top: 5rem;
     right: 5rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .loginContainer {
+        height: 100%;
+        width: 100%;
+    }
+
+    .loginWrapper {
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .loginLeftSide, .leftImg {
+        width: 100%;
+        height: 50%;
+    }
+
+    .loginRightSide {
+        flex: 1;
+        width: 100%;
+        height: 50%;
+        overflow: auto;
+    }
+}
+
+/* Styles for smaller screens, like mobile devices */
+@media screen and (max-width: 480px) {
+    .loginForm > input {
+        width: 100%;
+    }
+
+    .loginForm > .submitBtn {
+        width: 100%;
+    }
+
+    .errorMessage {
+        width: 100%;
+        right: 0;
+    }
 }

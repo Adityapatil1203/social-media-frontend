@@ -16,7 +16,11 @@ const PostPhoto = ({post}) => {
       onMouseLeave={()=> setIsHovered(false)}
       to={`/postDetails/${post._id}`}
     >
-      <img src={postdemoimg} alt="" />
+{
+  console.log("postttt ;",post)
+}
+
+      <img src={post?.photo ? post?.photo : postdemoimg} alt="" />
       {
          isHovered && <div className={classes.likes}>{post?.likes?.length} Likes</div>
 

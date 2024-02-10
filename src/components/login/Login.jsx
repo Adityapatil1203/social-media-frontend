@@ -41,9 +41,9 @@ const Login = () => {
   return (
     <div className={classes.loginContainer}>
        <div className={classes.loginWrapper}>
-            <div className={classes.loginLeftSide}>
+            {/* <div className={classes.loginLeftSide}>
                <img src={img} alt="" className={classes.leftImg}/>
-            </div>
+            </div> */}
             <div className={classes.loginRightSide}>
               <h2 className={classes.title}>Login</h2>
               <form onSubmit={handleLogin} action="" className={classes.loginForm}>

@@ -11,11 +11,14 @@ const ProfileCard = () => {
   const {user} = useSelector((state)=>state.auth)
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{border:"2px solid black"}}>
         <div className={classes.wrapper}>
           <div className={classes.top}>
+            {
+              console.log("profile card :",user.username)
+            }
             <div className={classes.imgContainer}>
-               <img src={man} alt="" className={classes.profileUserImg} />
+               <img src={user?.profileImg ? user?.profileImg:man} alt="" className={classes.profileUserImg} />
             </div>
             <div className={classes.usernameAndCreatedAt}>
               <p><span>Username:</span> {capitalizeFirstLetter(user.username)} </p>

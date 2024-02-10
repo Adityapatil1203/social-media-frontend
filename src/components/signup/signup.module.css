@@ -17,13 +17,13 @@
 }
 
 .signUpWrapper{
-border-radius:20px;
-width:45vw;
+/* border-radius:40px; */
+width:30vw;
 height:70vh;
 display:flex;
 align-items:center;
 justify-content:center;
-
+/* border: 2px solid black; */
 }
 
 .signUpLeftSide{
@@ -39,6 +39,7 @@ justify-content:center;
 }
 
 .signUpRightSide{
+    border-radius:40px;
     margin: 0;
     flex: 1;
     background-color: #fff;
@@ -69,6 +70,7 @@ justify-content:center;
     border: none;
     border-bottom: 1px solid #333;
     width: 50%;
+    font-size:14px;
     padding-left: 0.25rem;
     padding-bottom: 0.25rem;
     transition: 150ms all ease-in-out;

@@ -90,12 +90,12 @@ const PostDetails = () => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
          <div className={classes.left}>
-             <img src={post?.photo && `http://localhost:5000/images/${post?.photo}`} alt="" />
+             <img src={post?.photo && post?.photo} alt="" />
          </div>
         <div className={classes.right}>
             <div className={classes.wrapperTopSide}>
                <Link to={`/profileDetail/${post?.user?._id}`} className={classes.topRightSide}>
-                 <img src={man} alt="" className={classes.profileImage}/>
+                 <img src={post?.user?.profileImg ? post?.user?.profileImg:man} alt="" className={classes.profileImage}/>
               
                <div className={classes.userData}>
                  <span>{post?.user?.username}</span>
